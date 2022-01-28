@@ -1,0 +1,65 @@
+###
+
+POST http://localhost:8080/cryptowallet/bytes
+Content-Type: image/jpeg
+
+< cryptowallet.jpg
+
+###
+
+POST http://localhost:8080/cryptowallet/multipart
+Content-Type: multipart/form-data; boundary=WebBoundary
+
+--WebBoundary
+Content-Disposition: form-data; name="file"; filename="cryptowallet.jpg"
+Content-Type: image/jpeg
+
+< cryptowallet.jpg
+
+--WebBoundary--
+
+### REST
+
+GET http://localhost:8080/coins/getAll
+
+###
+
+GET http://localhost:8080/coins/getById?id=4
+
+###
+
+GET http://localhost:8080/coins/getByTicker/BNB
+
+###
+
+POST http://localhost:8080/coins/add
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Terra",
+  "ticker": "LUNA",
+  "price": 54,
+  "qty": 2000,
+  "image": "image.png"
+}
+
+###
+
+POST http://localhost:8080/coins/removeByTicker?ticker=BNB
+
+###
+
+POST http://localhost:8080/coins/restoreByTicker?ticker=BNB
+
+###
+
+POST http://localhost:8080/sales/register
+Content-Type: application/json
+
+{
+  "coinId": 3,
+  "price": 350,
+  "qty": 2,
+  "type": "sale"
+}
